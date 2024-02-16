@@ -3,6 +3,12 @@
 #include <stdlib.h>
 #include "cliente.h"
 
+struct cliente
+{
+    char nome[50];
+    char endereco[70];
+    int id;
+};
 // Como utilizo essa função para contar e alocar, preciso receber o array, então:
 struct cliente *contaClientes(int *qtdC)
 {
@@ -37,7 +43,6 @@ void coletaDados(struct cliente *clientes, int qtdC)
 {
     // Declarando as variáveis:
     int i = 0;
-    char linha[200];
 
     FILE *dados;
     dados = fopen("DataBase.txt", "r");
@@ -52,3 +57,12 @@ void coletaDados(struct cliente *clientes, int qtdC)
     // Fechando...
     fclose(dados);
 }
+// Função para mostrar dados (apenas para fins de verificação):
+void mostrarDados(struct cliente *Cliente, int qtdClientes)
+{
+    int j;
+    for (j = 0; j < qtdClientes; j++)
+    {
+        printf("Nome: %s, Endereço: %s, ID: %d\n", Cliente[j].nome, Cliente[j].endereco, Cliente[j].id);
+    }
+};

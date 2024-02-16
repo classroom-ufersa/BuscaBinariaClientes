@@ -5,17 +5,13 @@
 
 int main(void)
 {
-    int qtdClientes, j;
-    // Criando um ponteiro para struct e chamando a função para contagem e alocação:
+    int qtdClientes;
+    // Criando um ponteiro para struct e chamando a função para a contagem e alocação:
     struct cliente *clientes = contaClientes(&qtdClientes);
+
     // Passo o array e a quantidade de clientes obtida:
     coletaDados(clientes, qtdClientes);
-
-    // Imprimindo os dados coletados (para fins de verificação):
-    for (j = 0; j < qtdClientes; j++)
-    {
-        printf("Nome: %s, Endereço: %s, ID: %d\n", clientes[j].nome, clientes[j].endereco, clientes[j].id);
-    }
+    mostrarDados(clientes, qtdClientes);
 
     // Liberando a memória:
     free(clientes);
