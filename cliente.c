@@ -1,6 +1,7 @@
 // Bibliotecas usadas aqui:
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "cliente.h"
 
 struct cliente
@@ -66,3 +67,23 @@ void mostrarDados(struct cliente *Cliente, int qtdClientes)
         printf("Nome: %s, Endereço: %s, ID: %d\n", Cliente[j].nome, Cliente[j].endereco, Cliente[j].id);
     }
 };
+
+int comparaID(const void * pa, const void * pb){
+    const struct cliente * p1 = pa;
+    const struct cliente * p2 = pb;
+    return p1->id - p2->id;
+}
+
+void ordenaId(struct cliente *Cliente, int qtdClientes){
+    qsort(Cliente, qtdClientes, sizeof(struct cliente), comparaID);
+}
+
+int comparaNome(const void * pa, const void * pb){
+    const struct cliente * p1 = pa;
+    const struct cliente * p2 = pb;
+    return strcmp(p1->nome, p2->nome);
+}
+
+void ordenaNome(struct cliente *Cliente, int qtdClientes){
+    qsort(Cliente, qtdClientes, sizeof(struct cliente), comparaNome);
+}
