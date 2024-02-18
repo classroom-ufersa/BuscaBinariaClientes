@@ -1,7 +1,3 @@
-// Bibliotecas usadas aqui:
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "cliente.h"
 
 int main(void)
@@ -12,6 +8,8 @@ int main(void)
 
     // Passo o array e a quantidade de clientes obtida:
     coletaDados(clientes, qtdClientes);
+    // Chamada da função buscaBinaria_id.
+    buscaBinaria_id(clientes, qtdClientes);
     mostrarDados(clientes, qtdClientes);
 
     // Liberando a memória:

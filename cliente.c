@@ -1,7 +1,3 @@
-// Bibliotecas usadas aqui:
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "cliente.h"
 
 struct cliente
@@ -86,4 +82,48 @@ int comparaNome(const void * pa, const void * pb){
 
 void ordenaNome(struct cliente *Cliente, int qtdClientes){
     qsort(Cliente, qtdClientes, sizeof(struct cliente), comparaNome);
+}
+
+// Função para buscar o cliente pelo ID (Busca Binária por ID).
+void buscaBinaria_id(struct cliente *clientes, int qtdC){
+    int Numero_desejado;
+    char continuar;
+    do {
+        int encontrado = 0; 
+        printf("Informe o algarismo correspondente ao ID caro senhor(a):\n");
+        scanf("%d", &Numero_desejado);
+        int MAX_posicion = qtdC - 1; // Define a maior posição de (0 - 49) = 50 - 1 = 49.
+        int MIN_posicion = 0; // Define a menor posição que o número deve estar.
+        int Middle_posicion = 0; // A posição média será max + min/ 2 quebrando ao meio.
+
+        while(MIN_posicion <= MAX_posicion){
+            // Middle será a posição do meio no caso sempre será o resultado dessa conta.
+            Middle_posicion = ((MAX_posicion + MIN_posicion)/2); 
+
+            if(clientes[Middle_posicion].id == Numero_desejado){ 
+                // Quando o middle for o numero desejado ele imprime os dados.
+                printf("Nome: %s\n", clientes[Middle_posicion].nome);
+                printf("Endereco: %s\n", clientes[Middle_posicion].endereco);
+                printf("ID: %d\n", clientes[Middle_posicion].id);
+                encontrado = 1; // se o id e seus dados correspondentes forem encontrado.
+                break;
+            }else{
+                if (clientes[Middle_posicion].id > Numero_desejado){ 
+                    MAX_posicion = Middle_posicion - 1; 
+                    //  Se a middle for maior que o número desejado, a direita é deletada.
+                }else{
+                    MIN_posicion = Middle_posicion + 1;
+                    //  Se o Middle_posicion for menor que o número desejado, .a esquerda é deletada. 
+                }
+            }
+        }
+
+        if (!encontrado) {
+            // Se o id e seus dados correspondentes não forem encontrado.
+            printf("ID nao encontrado.\n");
+        } 
+// loop para o usuário escolher escolher se continua a procurar.
+        printf("Deseja continuar procurando IDs ?\n s = Sim\n n = Nao\n");
+        scanf(" %c", &continuar);
+    } while (continuar == 's' || continuar == 'S');
 }
