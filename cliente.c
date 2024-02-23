@@ -131,3 +131,41 @@ void buscaBinaria_id(struct cliente *clientes, int qtdC){
         scanf(" %c", &continuar);
     } while (continuar == 's' || continuar == 'S');
 }
+void buscaBinariaNome(struct cliente *clientes, int qtdClientes)
+{
+    ordenaNome(clientes, qtdClientes);
+    char nomeDesejado[50]; //vai armazenar o nome que o usário deseja buscar
+    int min = 0; //parte iniical do vetor
+    int max = qtdClientes - 1; //fim do vetor
+    int meio = 0;
+    printf("Digite o nome desejado: \n");
+    scanf(" %[^\n]", nomeDesejado); //está recebendo o nome que deve ser buscado
+
+    while(min <= max ) //enquanto o valor inicial do vetor for menor ou igual ao final, vai realizar a operação até que se encontre o nome desejadoo
+    {
+        meio = (min+max)/2;
+        
+        int comparacao = strcmp(clientes[meio].nome, nomeDesejado); //realiza a comparação das strings
+            if(comparacao == 0)
+            {
+                printf("================================\n");
+                printf("Nome: %s\n", clientes[meio].nome);
+                printf("Endereço: %s \n", clientes[meio].endereco);
+                printf("ID: %d\n", clientes[meio].id);
+                printf("================================\n");
+                return;
+
+            } 
+            else if(comparacao > 0) 
+            { 
+                max = meio -1;
+           }else //se o nome buscado é menor que o do meio do vetor
+            {
+                min = meio + 1; //atualiza o índice para a parte que é superior do vetor
+            }
+             //caso o nome não seja encontrado, vai indicar que é inexistente
+    }
+               
+        //caso o nome não seja encontrado, vai indicar que é inexistente
+        printf("cliente não encontrado\n");
+}
