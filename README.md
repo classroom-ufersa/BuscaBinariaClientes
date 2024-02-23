@@ -7,3 +7,4 @@ Busca de clientes com Busca Binária
 - Gustavo Rodrigues
 - José Kayque
 - Maria Eduarda 
+cd
