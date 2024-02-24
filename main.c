@@ -9,8 +9,7 @@ int main(void)
     // Passo o array e a quantidade de clientes obtida:
     coletaDados(clientes, qtdClientes);
     // Chamada da função buscaBinaria_id.
-    buscaBinaria_id(clientes, qtdClientes);
-    mostrarDados(clientes, qtdClientes);
+    buscaBinariaId(clientes, qtdClientes);
 
     // Liberando a memória:
     free(clientes);

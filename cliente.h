@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 /* Struct do cliente*/
 struct cliente;
@@ -21,7 +22,7 @@ int comparaID(const void * pa, const void * pb);
 void ordenaId(struct cliente *Cliente, int qtdClientes);
 
 /*Função para buscar o ID do cliente(Busca binária por ID)*/
-void buscaBinaria_id(struct cliente *clientes, int qtdC);
+void buscaBinariaId(struct cliente *clientes, int qtdC);
 
 /*Função para compara o nome dos clientes*/
 int comparaNome(const void * pa, const void * pb);

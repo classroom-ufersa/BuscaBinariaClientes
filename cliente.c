@@ -85,7 +85,7 @@ void ordenaNome(struct cliente *Cliente, int qtdClientes){
 }
 
 // Função para buscar o cliente pelo ID (Busca Binária por ID).
-void buscaBinaria_id(struct cliente *clientes, int qtdClientes){
+void buscaBinariaId(struct cliente *clientes, int qtdClientes){
     ordenaId(clientes, qtdClientes);
     int numeroDesejado = 0;
     int encontrado = 0; 
@@ -95,6 +95,7 @@ void buscaBinaria_id(struct cliente *clientes, int qtdClientes){
     int min = 0; // Define a menor posição que o número deve estar.
     int meio = 0; // A posição média será max + min/ 2 quebrando ao meio.
 
+    clock_t inicio = clock();
     while(min <= max){
         // Middle será a posição do meio no caso sempre será o resultado dessa conta.
         meio = ((max + min)/2); 
@@ -116,48 +117,50 @@ void buscaBinaria_id(struct cliente *clientes, int qtdClientes){
             }
         }
     }
-
     if (!encontrado) {
         // Se o id e seus dados correspondentes não forem encontrado.
         printf("ID nao encontrado.\n");
     } 
+
+    long double tempo = (double)(clock() - inicio) / CLOCKS_PER_SEC;
+    printf("Tempo de execucao: %Le\n", tempo);
 }
 
 void buscaBinariaNome(struct cliente *clientes, int qtdClientes)
 {
     ordenaNome(clientes, qtdClientes);
     char nomeDesejado[50]; //vai armazenar o nome que o usário deseja buscar
+    int encontrado = 0; 
     int min = 0; //parte iniical do vetor
     int max = qtdClientes - 1; //fim do vetor
     int meio = 0;
     printf("Digite o nome desejado: \n");
     scanf(" %[^\n]", nomeDesejado); //está recebendo o nome que deve ser buscado
 
-    while(min <= max ) //enquanto o valor inicial do vetor for menor ou igual ao final, vai realizar a operação até que se encontre o nome desejadoo
-    {
+    clock_t inicio = clock();
+    while(min <= max ){ //enquanto o valor inicial do vetor for menor ou igual ao final, vai realizar a operação até que se encontre o nome desejadoo
         meio = (min+max)/2;
         
         int comparacao = strcmp(clientes[meio].nome, nomeDesejado); //realiza a comparação das strings
-            if(comparacao == 0)
-            {
+            if(comparacao == 0){
                 printf("================================\n");
                 printf("Nome: %s\n", clientes[meio].nome);
                 printf("Endereço: %s \n", clientes[meio].endereco);
                 printf("ID: %d\n", clientes[meio].id);
                 printf("================================\n");
-                return;
-
+                break;
             } 
-            else if(comparacao > 0) 
-            { 
+            else if(comparacao > 0) { 
                 max = meio -1;
-           }else //se o nome buscado é menor que o do meio do vetor
-            {
+           }else{ //se o nome buscado é menor que o do meio do vetor
                 min = meio + 1; //atualiza o índice para a parte que é superior do vetor
             }
-             //caso o nome não seja encontrado, vai indicar que é inexistente
     }
-               
-        //caso o nome não seja encontrado, vai indicar que é inexistente
-        printf("cliente não encontrado\n");
+    if (!encontrado) {
+        // Se o id e seus dados correspondentes não forem encontrado.
+        printf("Cliente nao encontrado.\n");
+    }
+
+    long double tempo = (double)(clock() - inicio) / CLOCKS_PER_SEC;
+    printf("Tempo de execucao: %Le\n", tempo);
 }
