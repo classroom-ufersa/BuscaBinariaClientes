@@ -33,3 +33,5 @@ void ordenaNome(struct cliente *Cliente, int qtdClientes);
 /*Função que realiza a Busca Binária pelo nome do cliente*/
 void buscaBinariaNome(struct cliente *clientes, int qtdClientes);
 
+/*Função para adicionar um novo cliente ao arquivo*/
+int addCliente(int *num, struct cliente **clientes);

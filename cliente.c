@@ -90,7 +90,7 @@ void buscaBinariaId(struct cliente *clientes, int qtdClientes){
     int numeroDesejado = 0;
     int encontrado = 0; 
     printf("Informe o Id do cliente: \n");
-    scanf("%d", &numeroDesejado);
+    scanf(" %d", &numeroDesejado);
     int max = qtdClientes - 1; // Define a maior posição de (0 - 49) = 50 - 1 = 49.
     int min = 0; // Define a menor posição que o número deve estar.
     int meio = 0; // A posição média será max + min/ 2 quebrando ao meio.
@@ -164,3 +164,26 @@ void buscaBinariaNome(struct cliente *clientes, int qtdClientes)
     long double tempo = (double)(clock() - inicio) / CLOCKS_PER_SEC;
     printf("Tempo de execucao: %Le\n", tempo);
 }
+
+int addCliente(int *num, struct cliente **clientes) {
+    FILE *arquivo;
+    arquivo = fopen("DataBase.txt", "a");
+
+    printf("Digite o nome do cliente: \n");
+    scanf(" %[^\n]", (*clientes)[*num].nome);
+    printf("Digite o endereço do cliente: \n");
+    scanf(" %[^\n]", (*clientes)[*num].endereco);
+    (*clientes)[*num].id = *num + 1;
+    fprintf(arquivo, "%s\t%s\t%d\n", (*clientes)[*num].nome, (*clientes)[*num].endereco, (*clientes)[*num].id);
+    fclose(arquivo);
+
+    *clientes = realloc(*clientes, (*num + 2) * sizeof(struct cliente));
+    if (*clientes == NULL) {
+        printf("Erro ao alocar memória.\n");
+        return 1;
+    }
+
+    return ++*num;
+}
+
+
