@@ -405,6 +405,46 @@ int main(void)
     free(clientes);
     return 0;
 }
+````
 
-```
+
+## Complexidade do código: 
+. A essência da busca binária é a divisão sucessiva de N , onde N é o tamanho do vetor (início do vetor + última posição do vetor), por 2k, em que k é o total de possibilidades, até ser encontrado o target, ou, no pior caso, ( N)/2^k =1. Assim, podemos definir K como: 
+````
+
+                            N/2^k =1
+                            N=2^k
+                        log_2⁡ N=log_2⁡ 2^k 
+                        ∴ log _2⁡ N=k
+
+````
+## Eliminando constantes:
+````
+
+                             N/2^k =1
+                            N=2^k
+                    log_2⁡ N=log_2⁡ 2^k 
+                    ∴ log _2⁡ N=k
+````
+## No melhor caso temos que a complexidade será O(1),  já que para isso o valor estará no meio, realizando apenas uma divisão.
+
+## Agora, na busca binária por nome temos a complexidade no pior caso: 
+````
+                        C1+C2+C3+C4+C5+N/2^K  
+            (C6+ C7+C8+C9+C10+C11+C12+C13+C14+C15+C16+C17)=1 
+````
+## Eliminando constantes:
+````
+                            N/2^k =1
+                            N=2^k
+                        log_2⁡ N=log_2⁡ 2^k 
+                        ∴ log _2⁡ N=k
+
+
+  - No melhor caso a complexidade será igual ao da busca binaria por ID, O(1).
+````
+## Concluímos, então, que a complexidade do algoritmo de busca binária é 〖O(log〗_2⁡〖N)〗 no pior caso e O(1) no melhor caso.
+
+
+
 
