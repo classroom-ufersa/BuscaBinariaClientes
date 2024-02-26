@@ -2,8 +2,8 @@
 
 struct cliente
 {
-    char nome[50];
-    char endereco[70];
+    char nome[200];
+    char endereco[200];
     int id;
 };
 
@@ -148,6 +148,7 @@ int addCliente(int *num, struct cliente **clientes) {
     arquivo = fopen("DataBase.txt", "a");
 
     printf("Digite o nome do cliente: \n");
+    getchar();
     scanf(" %[^\n]", (*clientes)[*num].nome);
     printf("Digite o endereço do cliente: \n");
     scanf(" %[^\n]", (*clientes)[*num].endereco);
@@ -163,5 +164,3 @@ int addCliente(int *num, struct cliente **clientes) {
 
     return ++*num;
 }
-
-

@@ -48,3 +48,6 @@ Marcelo Rocha	Rua das Azaleias, 4700	047
 Daniela Souza	Avenida do Aquário, 4800	048
 Eduardo Teixeira	Rua das Tulipas, 4900	049
 Amanda Dias	Avenida do Planetário, 5000	050
+Amanda Gonçalves	Avenida do Junina, 530	051
+Carolina Pamela	Avenida do Tatu, 450	052
+Felipe Matos	Rua das Rosas, 479	053
