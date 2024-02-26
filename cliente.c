@@ -68,13 +68,23 @@ void ordenaNome(struct cliente *Cliente, int qtdClientes){
     qsort(Cliente, qtdClientes, sizeof(struct cliente), comparaNome);
 }
 
-// Função para buscar o cliente pelo ID (Busca Binária por ID).
 void buscaBinariaId(struct cliente *clientes, int qtdClientes){
     ordenaId(clientes, qtdClientes);
     int numeroDesejado = 0;
     int encontrado = 0; 
-    printf("Informe o Id do cliente: \n");
-    scanf(" %d", &numeroDesejado);
+
+    while (1) {
+        printf("Digite O ID do cliente: \n");
+
+        if (scanf("%d", &numeroDesejado) == 1) {
+            break;
+        } else {
+            while (getchar() != '\n');
+            printf("Entrada invalida. Por favor, insira um numero inteiro.\n");
+        }
+    }
+
+
     int max = qtdClientes - 1; 
     int min = 0; 
     int meio = 0;
@@ -108,7 +118,7 @@ void buscaBinariaId(struct cliente *clientes, int qtdClientes){
 void buscaBinariaNome(struct cliente *clientes, int qtdClientes)
 {
     ordenaNome(clientes, qtdClientes);
-    char nomeDesejado[50];
+    char nomeDesejado[200];
     int encontrado = 0; 
     int min = 0; 
     int max = qtdClientes - 1;
@@ -127,6 +137,7 @@ void buscaBinariaNome(struct cliente *clientes, int qtdClientes)
                 printf("Endereço: %s \n", clientes[meio].endereco);
                 printf("ID: %d\n", clientes[meio].id);
                 printf("================================\n");
+                encontrado = 1;
                 break;
             } 
             else if(comparacao > 0) { 

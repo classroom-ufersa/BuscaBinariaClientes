@@ -15,9 +15,15 @@ int main(void)
         printf("4 - Sair\n");
         printf("_-_-_-_-_-_-_-_-_-_-_-_-\n");
         coletaDados(clientes, qtdClientes);
-        printf("Digite a opcao desejada: ");
-        scanf(" %d", &comando);
-
+            while (1) {
+        printf("Digite a opcao desejada: \n");
+        if (scanf("%d", &comando) == 1) {
+            break;
+        } else {
+            while (getchar() != '\n');
+            printf("Entrada invalida. Por favor, insira um numero inteiro.\n");
+        }
+    }
         switch (comando)
         {
         case 1:
