@@ -155,7 +155,7 @@ int addCliente(int *num, struct cliente **clientes) {
     fprintf(arquivo, "%s\t%s\t%d\n", (*clientes)[*num].nome, (*clientes)[*num].endereco, (*clientes)[*num].id);
     fclose(arquivo);
 
-    *clientes = realloc(*clientes, (*num + 2) * sizeof(struct cliente));
+    *clientes = realloc(*clientes, (*num + 1) * sizeof(struct cliente));
     if (*clientes == NULL) {
         printf("Erro ao alocar memória.\n");
         return 1;
