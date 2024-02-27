@@ -183,33 +183,25 @@ void buscaBinariaNome(struct cliente *clientes, int qtdClientes)
     printf("Tempo de execucao: %Le\n", tempo);
 }
 
-int addCliente(int *num, struct cliente **clientes)
+void addCliente(int num)
 {
     int numeroValido;
     FILE *arquivo;
+    struct cliente aux;
     arquivo = fopen("DataBase.txt", "a");
     do
     {
         printf("Digite o nome do cliente: \n");
-        scanf(" %[^\n]", (*clientes)[*num].nome);
-        numeroValido = verificarDados((*clientes)[*num].nome);
+        scanf(" %[^\n]", aux.nome);
+        numeroValido = verificarDados(aux.nome);
     } while (numeroValido != 0);
 
     printf("Digite o endereço do cliente: \n");
-    scanf(" %[^\n]", (*clientes)[*num].endereco);
-
-    (*clientes)[*num].id = *num + 1;
-    fprintf(arquivo, "\n%s\t%s\t%d", (*clientes)[*num].nome, (*clientes)[*num].endereco, (*clientes)[*num].id);
+    scanf(" %[^\n]", aux.endereco);
+    aux.id = num + 1;
+    fprintf(arquivo, "\n%s\t%s\t%d", aux.nome, aux.endereco, aux.id);
     fclose(arquivo);
 
-    *clientes = realloc(*clientes, (*num + 1) * sizeof(struct cliente));
-    if (*clientes == NULL)
-    {
-        printf("Erro ao alocar memória.\n");
-        return 1;
-    }
-
-    return ++*num;
 }
 
 int verificarDados(const char *str)

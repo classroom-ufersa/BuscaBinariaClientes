@@ -5,7 +5,6 @@ int main(void)
     printf("Inicializando sistema...\n");
     int qtdClientes, comando;
     struct cliente *clientes = contaClientes(&qtdClientes);
-    
     do
     {
         printf("_-_-_- M E N U _-_-_-\n");
@@ -14,16 +13,21 @@ int main(void)
         printf("3 - Adicionar novo cliente\n");
         printf("4 - Sair\n");
         printf("_-_-_-_-_-_-_-_-_-_-_-_-\n");
+        clientes = contaClientes(&qtdClientes);
         coletaDados(clientes, qtdClientes);
-            while (1) {
-        printf("Digite a opcao desejada: \n");
-        if (scanf("%d", &comando) == 1) {
-            break;
-        } else {
-            while (getchar() != '\n');
-            printf("Entrada invalida. Por favor, insira um numero inteiro.\n");
+        while (1)
+        {
+            printf("Digite a opcao desejada: \n");
+            if (scanf("%d", &comando) == 1)
+            {
+                break;
+            }
+            else
+            {
+                while (getchar() != '\n');
+                printf("Entrada invalida. Por favor, insira um numero inteiro.\n");
+            }
         }
-    }
         switch (comando)
         {
         case 1:
@@ -33,7 +37,8 @@ int main(void)
             buscaBinariaNome(clientes, qtdClientes);
             break;
         case 3:
-            qtdClientes = addCliente(&qtdClientes, &clientes);
+            addCliente(qtdClientes);
+            qtdClientes++;
             break;
         case 4:
             printf("Saindo...\n");
