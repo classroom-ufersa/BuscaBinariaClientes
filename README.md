@@ -418,33 +418,50 @@ int main(void)
                         ∴ log _2⁡ N=k
 
 ````
-## Eliminando constantes:
+-- Na análise de complexidade da busca binária po ID:
 ````
-
-                             N/2^k =1
-                            N=2^k
-                    log_2⁡ N=log_2⁡ 2^k 
-                    ∴ log _2⁡ N=k
+C1+C2+(X(C3+C4))+C5+C6+C7+C8+N/2^K(C9+C10+C11+C12+C13+C14+C15+C16+C17+C18)+C19+C20+C21+C22 
 ````
-## No melhor caso temos que a complexidade será O(1),  já que para isso o valor estará no meio, realizando apenas uma divisão.
-
-## Agora, na busca binária por nome temos a complexidade no pior caso: 
+- (N)/(2^K) pode ser escrito por log2(n):
 ````
-                        C1+C2+C3+C4+C5+N/2^K  
-            (C6+ C7+C8+C9+C10+C11+C12+C13+C14+C15+C16+C17)=1 
+T(N)= C1+C2+(X(C3+C4))+C5+C6+C7+C8+log2N(C9+C10+C11+C12+C13+C14+C15+C16+C17+C18)+C19+C20+C21+C22 
 ````
-## Eliminando constantes:
+- Considerando:
 ````
-                            N/2^k =1
-                            N=2^k
-                        log_2⁡ N=log_2⁡ 2^k 
-                        ∴ log _2⁡ N=k
-
-
-  - No melhor caso a complexidade será igual ao da busca binaria por ID, O(1).
+C1+C2+C5+C6+C7+C8+C19+C20+C21+C22  = A;
+(X(C3+C4)) = B
+C9+C10+C11+C12+C13+C14+C15+C16+C17+C18 = C
 ````
-## Concluímos, então, que a complexidade do algoritmo de busca binária é 〖O(log〗_2⁡〖N)〗 no pior caso e O(1) no melhor caso.
+Temos:
+T(N)= A + B+log(2) N(C)
+- Em notação BigO, temos que a complexidade é O(log(2)N).
+- No melhor caso temos que a complexidade será O(1),  já que para isso o valor estará no meio, realizando apenas uma divisão.
+
+-- Agora, na busca binária por nome temos a complexidade no pior caso: 
+````
+T(N)= C1+C2+C3+C4+C5+C6+ C7+〖log〗_(2 ) N(C8+C9+C10+C11+C12+C13+C14+C15+C16+C17+C18+C19+C20)+C21+C22 
+````
+- Considerando:
+````
+C1+C2+C3+C4+C5+C6+ C7+C21+C22  = A;
+C8+C9+C10+C11+C12+C13+C14+C15+C16+C17 +C18+C19+C20 = B
+````
+- Temos:
+T(N)= A+(log(2)N(B)
+Em notação BigO, temos que a complexidade é O(log(2)N).
+
+- Considerando:
+. C1+C2+C5+C6+C7+C8+C9+C20+C21+C22 = A;
+. C8+C9+C10+C11+C12+C13+C14+C15+C16+C17+C18+C19+C20 = B
+- Temos: T(N) = A+log2N(B).
+- Em notação BigO, temos que a complexidade é O(log2N).
+````
+- E no melhor caso a complexidade será igual ao da busca binaria por ID: O(1).
+
+## Concluímos, então, que a complexidade do algoritmo de busca binária é (O(log2⁡(N) no pior caso e O(1) no melhor caso.
 
 
+## Complexidade de Espaço
+Como a busca binária não usa nenhum espaço de memória extra para procurar elementos, tanto na busca binaria por id como na busca binaria por nome, temos que a sua complexidade de espaço é constante: O(1).
 
 
