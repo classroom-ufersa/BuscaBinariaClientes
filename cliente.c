@@ -45,15 +45,6 @@ void coletaDados(struct cliente *clientes, int qtdC)
     fclose(dados);
 }
 
-void mostrarDados(struct cliente *Cliente, int qtdClientes)
-{
-    int j;
-    for (j = 0; j < qtdClientes; j++)
-    {
-        printf("Nome: %s, Endereço: %s, ID: %d\n", Cliente[j].nome, Cliente[j].endereco, Cliente[j].id);
-    }
-}
-
 int comparaID(const void *pointerA, const void *pointerB)
 {
     const struct cliente *pointer1 = pointerA;
@@ -80,7 +71,6 @@ void ordenaNome(struct cliente *Cliente, int qtdClientes)
 
 void buscaBinariaId(struct cliente *clientes, int qtdClientes)
 {
-    ordenaId(clientes, qtdClientes);
     int numeroDesejado = 0;
     int encontrado = 0;
 
@@ -94,8 +84,7 @@ void buscaBinariaId(struct cliente *clientes, int qtdClientes)
         }
         else
         {
-            while (getchar() != '\n')
-                ;
+            while (getchar() != '\n');
             printf("Entrada invalida. Por favor, insira um numero inteiro.\n");
         }
     }
@@ -134,13 +123,12 @@ void buscaBinariaId(struct cliente *clientes, int qtdClientes)
         printf("ID nao encontrado.\n");
     }
 
-    long double tempo = (double)(clock() - inicio) / CLOCKS_PER_SEC;
-    printf("Tempo de execucao: %Le\n", tempo);
+    double tempo = (double)(clock() - inicio) / CLOCKS_PER_SEC;
+    printf("Tempo de execucao: %Lf\n", tempo);
 }
 
 void buscaBinariaNome(struct cliente *clientes, int qtdClientes)
 {
-    ordenaNome(clientes, qtdClientes);
     char nomeDesejado[200];
     int encontrado = 0;
     int min = 0;
@@ -179,8 +167,8 @@ void buscaBinariaNome(struct cliente *clientes, int qtdClientes)
         printf("Cliente nao encontrado.\n");
     }
 
-    long double tempo = (double)(clock() - inicio) / CLOCKS_PER_SEC;
-    printf("Tempo de execucao: %Le\n", tempo);
+    double tempo = (double)(clock() - inicio) / CLOCKS_PER_SEC;
+    printf("Tempo de execucao: %Lf\n", tempo);
 }
 
 void addCliente(int num)

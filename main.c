@@ -31,9 +31,11 @@ int main(void)
         switch (comando)
         {
         case 1:
+            ordenaId(clientes, qtdClientes);
             buscaBinariaId(clientes, qtdClientes);
             break;
         case 2:
+            ordenaNome(clientes, qtdClientes);
             buscaBinariaNome(clientes, qtdClientes);
             break;
         case 3:
