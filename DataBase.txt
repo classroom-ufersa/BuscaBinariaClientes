@@ -51,3 +51,5 @@ Amanda Dias	Avenida do Planetário, 5000	050
 Amanda Gonçalves	Avenida do Junina, 530	051
 Carolina Pamela	Avenida do Tatu, 450	052
 Felipe Matos	Rua das Rosas, 479	053
+Renata Lavinia	Avenida do Rona, 470	054
+Thiago Barros	Rua das Maning, 350	055
