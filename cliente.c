@@ -94,7 +94,7 @@ void buscaBinariaId(struct cliente *clientes, int qtdClientes)
     int meio = 0;
 
     clock_t inicio = clock();
-    while (min <= max)
+    while (min <= max && clientes[meio].id != numeroDesejado)
     {
         meio = ((max + min) / 2);
 
@@ -138,7 +138,7 @@ void buscaBinariaNome(struct cliente *clientes, int qtdClientes)
     scanf(" %[^\n]", nomeDesejado);
 
     clock_t inicio = clock();
-    while (min <= max)
+    while (min <= max && strcmp(clientes[meio].nome, nomeDesejado) != 0)
     {
         meio = (min + max) / 2;
 
